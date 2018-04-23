@@ -28,21 +28,33 @@ local function shell(command)
 end
 
 local function add_voucher(msg)
+    local result = {}
     local key = msg.key
     local secret = msg.secret
     local epoc = msg.epoc
     local upload = msg.upload
     local download = msg.download
     local amountofmacsallowed = msg.amountofmacsallowed
+    result.key = key
+    result.secret = secret
+    result.epoc = epoc
+    result.upload = upload
+    result.download = download
+    result.amountofmacsallowed = amountofmacsallowed
     shell('voucher add_voucher '..key..' '..secret..' '..epoc..' '..download..' '..upload..' '..amountofmacsallowed)
-    print('Done adding '..key..' with secret '..secret..' options: '..epoc..download..upload..amountofmacsallowed);
+    printJson(result)
+    shell('/usr/bin/captive-portal')
 end
 
 local function auth_voucher(msg)
+    local result = {}
     local mac = msg.mac
     local key = msg.key
+    result.mac = mac
+    result.key = key
     shell('voucher auth_voucher '..mac..' '..key)
-    print('Done adding voucher for user '..key..' mac address '..mac);
+    printJson(result)
+    shell('/usr/bin/captive-portal')
 end
 
 local function print_valid_macs(msg)
