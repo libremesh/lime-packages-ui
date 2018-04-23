@@ -58,9 +58,10 @@ local function auth_voucher(msg)
 end
 
 local function print_valid_macs(msg)
-    print('Valid macs: ')
-    local result = shell('voucher print_valid_macs')
-    print(result);
+    local result = {}
+    local shell_output = shell('voucher print_valid_macs')
+    result.macs = shell_output
+    printJson(result);
 end
 
 local function status(msg)
