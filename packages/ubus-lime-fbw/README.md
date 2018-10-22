@@ -1,20 +1,20 @@
+# FirstBootWizard Libremesh ubus module
 
-# Utils Libremesh ubus status module
-
-|Path   	|Procedure   	|Signature   	|Description
-|---  |---  |---  |---
-|lime.utils |get_cloud_nodes   	|{}   	| Get cloud nodes
+| Path     | Procedure       | Signature          | Description                               |
+| -------- | --------------- | ------------------ | ----------------------------------------- |
+| lime-fbw | status          | {}                 | Get FBW status (scanning, lock, disabled) |
+| lime-fbw | create_network  | {"name": "string"} | Create network                            |
+| lime-fbw | search_networks | {"scan": true      | false}                                    | Get all networks (true force rescan) |
+| lime-fbw | set_network     | {"file": "string"} | Use one of the results                    |
 
 ## Examples
 
-### ubus -v list lime-utils
+### ubus -v list lime-fbw
 
 ```
-'lime-utils' @3c52d0ab
-	"get_cloud_nodes":{"no_params":"Integer"}
-	"get_community_settings":{"no_params":"Integer"}
-	"set_notes":{"text":"String"}
-	"change_config":{"name":"String","ip":"String"}
-	"get_notes":{"no_params":"Integer"}
-	"get_node_status":{"no_params":"Integer"}
+''lime-fbw' @4c5b89e0
+	"status":{}
+	"create_network":{"name":"String"}
+	"search_networks":{"scan":"Boolean"}
+	"set_network":{"file":"String"}
 ```
