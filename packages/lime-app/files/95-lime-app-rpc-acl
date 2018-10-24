@@ -1,16 +1,16 @@
 #!/bin/sh
-cat > /usr/share/rpcd/acl.d << EOF
+cat > /usr/share/rpcd/acl.d/unauthenticated.json << EOF
 {
-	"unauthenticated": {
-		"description": "Access controls for unauthenticated requests",
-		"read": {
-			"ubus": {
-				"session": [
-					"access",
-					"login"
-				]
-			}
-		}
-	}
+  "unauthenticated": {
+    "description": "Access controls for unauthenticated requests",
+    "read": {
+      "ubus": {
+        "session": [
+          "access",
+          "login"
+        ]
+      }
+    }
+  }
 }
 EOF
